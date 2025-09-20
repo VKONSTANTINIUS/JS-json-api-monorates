@@ -8,28 +8,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
   <style>
     /* Глобальні налаштування для всього документа */
     :root {
-      --primary-color: #000000; /* Основний колір тексту */
-      --bg-color: #f5f5f5;      /* Колір фону сторінки */
-      --card-bg-color: #ffffff; /* Колір фону карток */
-      --accent-color: #ff6a00;  /* Колір акценту (кнопка, іконки) */
-      --border-color: #eee;     /* Колір рамок */
+      --primary-color: #000000;
+      --bg-color: #f5f5f5;
+      --card-bg-color: rgba(255, 255, 255, 0.18);
+      --accent-color: #ff6a00;
+      --border-color: #eee;
     }
 
     /* Скидання стандартних стилів браузера та базові налаштування */
     body {
-      font-family: 'Roboto', sans-serif; /* Встановлення основного шрифту */
-      background-color: var(--bg-color); /* Колір фону */
+      font-family: 'Roboto', sans-serif;
+      /* ✨ ЗМІНЕНО: Додано градієнт на фон */
+      background: linear-gradient(135deg, #F6CCD4 0%, #C8DDF3 100%);
       color: var(--primary-color);
-      display: flex; /* Використання Flexbox для центрування контенту */
+      display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh; /* Мінімальна висота на весь екран */
+      min-height: 100vh;
       margin: 0;
-      padding: 20px; /* Внутрішні відступи для безпечної зони */
-      box-sizing: border-box; /* Включає padding у загальну ширину/висоту */
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     /* Головний контейнер, що центрує весь контент */
@@ -37,41 +39,55 @@
       text-align: center;
       background-color: var(--card-bg-color);
       padding: 40px;
-      border-radius: 16px; /* Закруглені кути */
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Тінь для ефекту об'єму */
-      max-width: 800px; /* Максимальна ширина контейнера */
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
       width: 100%;
+    }
+
+    /* ✨ НОВИЙ СТИЛЬ: Стилізація для логотипа */
+    .logo {
+      height: 60px; /* Висота лого */
+      width: auto; /* Ширина автоматична для збереження пропорцій */
+      margin-bottom: 20px; /* Відступ знизу до заголовка */
+      border-radius: 50%;
+    }
+
+    img {
+      border-radius: 50%;
+
     }
 
     /* Заголовок сайту */
     h1 {
-      font-size: 2.5rem; /* Розмір шрифту */
+      font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 30px; /* Відступ знизу */
+      margin-top: 0; /* Прибираємо верхній відступ, оскільки він є у лого */
+      margin-bottom: 30px;
     }
 
     /* Контейнер для карток з курсами валют */
     #currency-rates {
-      display: grid; /* Використання Grid для розміщення карток */
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Адаптивна сітка: колонки автоматично підлаштовуються */
-      gap: 20px; /* Відстань між картками */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
       margin-bottom: 30px;
-      min-height: 150px; /* Мінімальна висота, щоб уникнути "стрибків" контенту при завантаженні */
+      min-height: 150px;
     }
 
     /* Стиль для кожної картки з курсом */
     .rate-card {
-      background-color: #fdfdfd;
+      background-color: rgba(253, 253, 253, 0.68);
       border: 1px solid var(--border-color);
       padding: 20px;
       border-radius: 12px;
       text-align: left;
-      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Плавна анімація при наведенні */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .rate-card:hover {
-      transform: translateY(-5px); /* Ледь піднімає картку */
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* Посилює тінь */
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
     }
 
     /* Заголовок картки (наприклад, "USD / UAH") */
@@ -88,7 +104,7 @@
       font-size: 1.1rem;
       margin: 8px 0;
       display: flex;
-      justify-content: space-between; /* Розміщує назву і значення по боках */
+      justify-content: space-between;
     }
 
     .rate-card p span {
@@ -110,21 +126,21 @@
     }
 
     #update-btn:hover {
-      background-color: #e65c00; /* Темніший відтінок при наведенні */
-      transform: scale(1.05); /* Збільшення кнопки */
+      background-color: #e65c00;
+      transform: scale(1.05);
     }
 
     /* Підпис виконавця */
     footer {
-      position: fixed; /* Фіксоване положення відносно вікна браузера */
+      position: fixed;
       left: 20px;
       bottom: 10px;
       font-size: 0.9rem;
-      color: #aaa;
+      color: #666; /* Зробили колір трохи світлішим для кращої видимості на градієнті */
     }
 
     footer a {
-      color: #888;
+      color: #444;
       text-decoration: none;
     }
 
@@ -143,7 +159,6 @@
         font-size: 2rem;
       }
       footer {
-        /* На мобільних пристроях ховаємо підпис або центруємо */
         text-align: center;
         width: 100%;
         left: 0;
@@ -154,9 +169,14 @@
 <body>
 
 <div class="container">
+
+  <div class="logo"> <img src="img/8d4a104cf607648e.jpg" alt="Mono" width="50" height="50"> </div>
+
   <h1>Курси Валют Monobank</h1>
+
   <div id="currency-rates">
   </div>
+
   <button id="update-btn">Оновити дані</button>
 </div>
 
@@ -165,73 +185,39 @@
 </footer>
 
 <script>
-  // Коли вся HTML-структура сторінки завантажилася, починаємо виконувати скрипт.
   document.addEventListener('DOMContentLoaded', () => {
 
-    // Отримуємо посилання на ключові елементи сторінки для маніпуляцій.
     const ratesContainer = document.getElementById('currency-rates');
     const updateBtn = document.getElementById('update-btn');
 
-    /**
-     * Допоміжна функція для перетворення коду валюти (число) в її літерний символ (рядок).
-     * @param {number} code - Числовий код валюти (наприклад, 840).
-     * @returns {string} - Літерний символ (наприклад, "USD").
-     */
     const getCurrencySymbol = (code) => {
-      const currencyMap = {
-        840: 'USD', // Долар США
-        978: 'EUR', // Євро
-        980: 'UAH', // Українська гривня
-      };
-      return currencyMap[code] || 'N/A'; // Повертає символ або 'N/A', якщо код невідомий
+      const currencyMap = { 840: 'USD', 978: 'EUR', 980: 'UAH' };
+      return currencyMap[code] || 'N/A';
     };
 
-    /**
-     * Асинхронна функція для отримання та відображення курсів валют.
-     * "Асинхронна" означає, що вона може виконувати запити в мережу, не блокуючи роботу сторінки.
-     */
     const fetchRates = async () => {
-      // 1. ПОКАЗУЄМО СТАН ЗАВАНТАЖЕННЯ
-      // Це дає користувачеві зрозуміти, що дані завантажуються.
       ratesContainer.innerHTML = '<p>Завантаження даних...</p>';
 
       try {
-        // 2. ВИКОНУЄМО ЗАПИТ ДО API MONOBANK
-        // fetch() - це стандартний спосіб робити HTTP-запити в JavaScript.
-        // 'await' змушує код чекати, доки відповідь від сервера не буде отримана.
         const response = await fetch('https://api.monobank.ua/bank/currency');
 
-        // Перевіряємо, чи успішний запит (статус 200-299).
         if (!response.ok) {
-          // Якщо ні, створюємо помилку, яка буде перехоплена в блоці catch.
           throw new Error(`Помилка мережі: ${response.status}`);
         }
 
-        // 3. АНАЛІЗУЄМО JSON
-        // .json() перетворює тіло відповіді з формату JSON у звичайний об'єкт JavaScript.
         const allRates = await response.json();
 
-        // 4. ФІЛЬТРУЄМО НЕОБХІДНІ ДАНІ
-        // API повертає багато валютних пар. Нам потрібні лише USD->UAH та EUR->UAH.
-        // Ми фільтруємо масив, залишаючи тільки ті об'єкти, де:
-        // currencyCodeA - це долар (840) або євро (978)
-        // І currencyCodeB - це гривня (980)
         const requiredRates = allRates.filter(rate =>
           (rate.currencyCodeA === 840 || rate.currencyCodeA === 978) && rate.currencyCodeB === 980
         );
 
-        // Перевіряємо, чи знайшли ми потрібні курси після фільтрації.
         if (requiredRates.length === 0) {
           throw new Error('Не вдалося знайти курси USD або EUR.');
         }
 
-        // 5. ОЧИЩУЄМО КОНТЕЙНЕР І ГОТУЄМО HTML ДЛЯ ВІДОБРАЖЕННЯ
-        ratesContainer.innerHTML = ''; // Очищуємо напис "Завантаження..."
+        ratesContainer.innerHTML = '';
 
-        // 6. СТВОРЮЄМО HTML-КАРТКИ ДЛЯ КОЖНОЇ ВАЛЮТИ
-        // .forEach() проходить по кожному елементу відфільтрованого масиву.
         requiredRates.forEach(rate => {
-          // Створюємо HTML-розмітку для картки з курсом, використовуючи шаблонні рядки.
           const rateCardHTML = `
                             <div class="rate-card">
                                 <h2>${getCurrencySymbol(rate.currencyCodeA)} / ${getCurrencySymbol(rate.currencyCodeB)}</h2>
@@ -239,26 +225,16 @@
                                 <p>Продаж: <span>${rate.rateSell.toFixed(2)}</span></p>
                             </div>
                         `;
-          // .toFixed(2) форматує число, залишаючи 2 знаки після коми.
-
-          // Додаємо створену картку в контейнер на сторінці.
           ratesContainer.insertAdjacentHTML('beforeend', rateCardHTML);
         });
 
       } catch (error) {
-        // 7. ОБРОБКА ПОМИЛОК
-        // Якщо на будь-якому етапі в блоці 'try' виникла помилка, виконання переходить сюди.
-        console.error('Не вдалося завантажити курси:', error); // Виводимо помилку в консоль для розробника.
-        ratesContainer.innerHTML = `<p>Виникла помилка при завантаженні курсів. Спробуйте оновити сторінку.</p>`; // Показуємо повідомлення для користувача.
+        console.error('Не вдалося завантажити курси:', error);
+        ratesContainer.innerHTML = `<p>Виникла помилка при завантаженні курсів. Спробуйте оновити сторінку.</p>`;
       }
     };
 
-    // Додаємо обробник події "click" на кнопку оновлення.
-    // При кожному кліку буде викликатися функція fetchRates().
     updateBtn.addEventListener('click', fetchRates);
-
-    // Викликаємо функцію fetchRates() одразу при завантаженні сторінки,
-    // щоб користувач відразу побачив актуальні курси.
     fetchRates();
   });
 </script>
