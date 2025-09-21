@@ -3,168 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Курси валют | Monobank</title>
+  
+  <title>Курси валют | Monobank</title> 
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* Глобальні налаштування для всього документа */
-    :root {
-      --primary-color: #000000;
-      --bg-color: #f5f5f5;
-      --card-bg-color: rgba(255, 255, 255, 0.18);
-      --accent-color: #ff6a00;
-      --border-color: #eee;
-    }
-
-    /* Скидання стандартних стилів браузера та базові налаштування */
-    body {
-      font-family: 'Roboto', sans-serif;
-      /* ✨ ЗМІНЕНО: Додано градієнт на фон */
-      background: linear-gradient(135deg, #F6CCD4 0%, #C8DDF3 100%);
-      color: var(--primary-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    /* Головний контейнер, що центрує весь контент */
-    .container {
-      text-align: center;
-      background-color: var(--card-bg-color);
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      max-width: 800px;
-      width: 100%;
-    }
-
-    /* ✨ НОВИЙ СТИЛЬ: Стилізація для логотипа */
-    .logo {
-      height: 60px; /* Висота лого */
-      width: auto; /* Ширина автоматична для збереження пропорцій */
-      margin-bottom: 20px; /* Відступ знизу до заголовка */
-      border-radius: 50%;
-    }
-
-    img {
-      border-radius: 50%;
-
-    }
-
-    /* Заголовок сайту */
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-top: 0; /* Прибираємо верхній відступ, оскільки він є у лого */
-      margin-bottom: 30px;
-    }
-
-    /* Контейнер для карток з курсами валют */
-    #currency-rates {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-      min-height: 150px;
-    }
-
-    /* Стиль для кожної картки з курсом */
-    .rate-card {
-      background-color: rgba(253, 253, 253, 0.68);
-      border: 1px solid var(--border-color);
-      padding: 20px;
-      border-radius: 12px;
-      text-align: left;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .rate-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Заголовок картки (наприклад, "USD / UAH") */
-    .rate-card h2 {
-      font-size: 1.5rem;
-      margin-top: 0;
-      margin-bottom: 15px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 10px;
-    }
-
-    /* Текст всередині картки (Купівля, Продаж) */
-    .rate-card p {
-      font-size: 1.1rem;
-      margin: 8px 0;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .rate-card p span {
-      font-weight: 700;
-      color: var(--primary-color);
-    }
-
-    /* Кнопка оновлення */
-    #update-btn {
-      background-color: var(--accent-color);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 1rem;
-      font-weight: 700;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    #update-btn:hover {
-      background-color: #e65c00;
-      transform: scale(1.05);
-    }
-
-    /* Підпис виконавця */
-    footer {
-      position: fixed;
-      left: 20px;
-      bottom: 10px;
-      font-size: 0.9rem;
-      color: #666; /* Зробили колір трохи світлішим для кращої видимості на градієнті */
-    }
-
-    footer a {
-      color: #444;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* ======================================================= */
-    /* ================ АДАПТИВНА ВЕРСТКА ==================== */
-    /* ======================================================= */
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      footer {
-        text-align: center;
-        width: 100%;
-        left: 0;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  
 </head>
 <body>
 
@@ -174,69 +17,14 @@
 
   <h1>Курси Валют Monobank</h1>
 
-  <div id="currency-rates">
-  </div>
+  <div id="currency-rates"> </div>
 
   <button id="update-btn">Оновити дані</button>
+
 </div>
 
-<footer>
-  <p>VKonstantinius</p>
-</footer>
+<footer>  <p>VKonstantinius</p> </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-
-    const ratesContainer = document.getElementById('currency-rates');
-    const updateBtn = document.getElementById('update-btn');
-
-    const getCurrencySymbol = (code) => {
-      const currencyMap = { 840: 'USD', 978: 'EUR', 980: 'UAH' };
-      return currencyMap[code] || 'N/A';
-    };
-
-    const fetchRates = async () => {
-      ratesContainer.innerHTML = '<p>Завантаження даних...</p>';
-
-      try {
-        const response = await fetch('https://api.monobank.ua/bank/currency');
-
-        if (!response.ok) {
-          throw new Error(`Помилка мережі: ${response.status}`);
-        }
-
-        const allRates = await response.json();
-
-        const requiredRates = allRates.filter(rate =>
-          (rate.currencyCodeA === 840 || rate.currencyCodeA === 978) && rate.currencyCodeB === 980
-        );
-
-        if (requiredRates.length === 0) {
-          throw new Error('Не вдалося знайти курси USD або EUR.');
-        }
-
-        ratesContainer.innerHTML = '';
-
-        requiredRates.forEach(rate => {
-          const rateCardHTML = `
-                            <div class="rate-card">
-                                <h2>${getCurrencySymbol(rate.currencyCodeA)} / ${getCurrencySymbol(rate.currencyCodeB)}</h2>
-                                <p>Купівля: <span>${rate.rateBuy.toFixed(2)}</span></p>
-                                <p>Продаж: <span>${rate.rateSell.toFixed(2)}</span></p>
-                            </div>
-                        `;
-          ratesContainer.insertAdjacentHTML('beforeend', rateCardHTML);
-        });
-
-      } catch (error) {
-        console.error('Не вдалося завантажити курси:', error);
-        ratesContainer.innerHTML = `<p>Виникла помилка при завантаженні курсів. Спробуйте оновити сторінку.</p>`;
-      }
-    };
-
-    updateBtn.addEventListener('click', fetchRates);
-    fetchRates();
-  });
-</script>
+<script src="js/app.js"> </script>
 </body>
 </html>
