@@ -7,8 +7,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  /* ✨ ЗМІНЕНО: Додано градієнт на фон */
+  font-family: 'Roboto', sans-serif;  
   background: linear-gradient(135deg, #F6CCD4 0%, #C8DDF3 100%);
   color: var(--primary-color);
   display: flex;
@@ -31,9 +30,9 @@ body {
 }
 
 .logo {
-  height: 60px; /* Висота лого */
-  width: auto; /* Ширина автоматична для збереження пропорцій */
-  margin-bottom: 20px; /* Відступ знизу до заголовка */
+  height: 60px; 
+  width: auto;
+  margin-bottom: 20px; 
   border-radius: 50%;
 }
 
